@@ -2,10 +2,12 @@ package zerobase.weather;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Transactional
 class WeatherApplicationTests {
     /*
      * given 어떤 데이터가 있을 때
