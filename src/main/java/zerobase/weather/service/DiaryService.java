@@ -49,7 +49,7 @@ public class DiaryService {
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public void createDiary(LocalDate date, String text) {
-        logger.info("started to create diary");
+        logger.info("created diary of text: " + text);
         // 날씨 데이터 가져오기 (API 에서 가져오기 or DB 에서 가져오기)
         DateWeather dateWeather = getDateWeather(date);
 
@@ -58,9 +58,6 @@ public class DiaryService {
         nowDiary.setDateWeather(dateWeather);
         nowDiary.setText(text);
         diaryRepository.save(nowDiary);
-        logger.info("end to create diary");
-
-
     }
 
     private DateWeather getDateWeather(LocalDate date) {
