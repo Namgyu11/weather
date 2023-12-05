@@ -68,8 +68,10 @@ public class DiaryService {
         if (dataWeatherListFromDB.size() == 0) {
             //새로 api에서 날씨 정보를 가져와 한다.
             //정책상,, 현재 날씨를 가져오도록 하거나,, 날씨 없이 일기를 쓰도록..
+            logger.info("get dateWeather from api");
             return getWeatherFromApi();
         } else {
+
             return dataWeatherListFromDB.get(0);
         }
     }
@@ -89,6 +91,10 @@ public class DiaryService {
 
     @Transactional(readOnly = true)
     public List<Diary> readDiary(LocalDate date) {
+        if(date.isAfter(LocalDate.ofYearDay(3050,1))){
+
+        }
+
         logger.debug("read diary");
         return diaryRepository.findAllByDate(date);
     }
